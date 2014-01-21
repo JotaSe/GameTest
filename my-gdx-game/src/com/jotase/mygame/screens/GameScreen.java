@@ -1,5 +1,6 @@
 package com.jotase.mygame.screens;
 
+
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -7,14 +8,15 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
-import com.jotase.mygame.controller.WorldController;
+import com.jotase.mygame.controller.DummyController;
+
 import com.jotase.mygame.model.DummyWorld;
 import com.jotase.mygame.view.WorldRenderer;
 
 public class GameScreen implements Screen, InputProcessor {
 	private DummyWorld world;
 	private WorldRenderer renderer;
-	private WorldController controller;
+	private DummyController controller;
 	private int width, height;
 
 	@Override
@@ -36,7 +38,7 @@ public class GameScreen implements Screen, InputProcessor {
 	public void show() {
 		world = new DummyWorld();
 		renderer = new WorldRenderer(world, false);
-		controller = new WorldController(world, world.getDummy());
+		controller = new DummyController(world, world.getDummy());
 		Gdx.input.setInputProcessor(this);
 
 	}

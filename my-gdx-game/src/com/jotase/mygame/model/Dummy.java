@@ -11,10 +11,15 @@ public class Dummy {
 	public enum State {
 		IDLE, WALKING, JUMPING, DYING, SHOOTING
 	}
+	
 
+
+	
+	
 	public static final float SPEED = 4f;// unit per second
 	public static final float JUMP_VELOCITY = 1f;
 	public static final float size = 0.5f;// size of the actor (half a unit)
+	float stateTime = 0;
 
 	Vector2 position = new Vector2();
 	Vector2 acceleration = new Vector2();
@@ -28,6 +33,10 @@ public class Dummy {
 		this.position = position;
 		this.bounds.height = size;
 		this.bounds.width = size;
+	}
+
+	public float getStateTime() {
+		return stateTime;
 	}
 
 	public Rectangle getBounds() {
@@ -79,9 +88,8 @@ public class Dummy {
 	}
 
 	public void update(float delta) {
+		stateTime += delta;
 		position.add(velocity.cpy().mul(delta));
-
-
 	}
 
 }
